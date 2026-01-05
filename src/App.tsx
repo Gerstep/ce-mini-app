@@ -7,7 +7,7 @@ import { Posts } from './pages/Posts';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ce-mini-app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ads" element={<Ads />} />
