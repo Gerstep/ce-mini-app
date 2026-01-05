@@ -33,7 +33,7 @@ export function Ads() {
         <div className="tg-card text-center mb-4">
           <div className="text-4xl mb-2">📢</div>
           <h1 className="text-xl font-bold">Реклама в канале</h1>
-          <p className="tg-hint text-sm mt-1">cryptoEssay • 120K+ подписчиков</p>
+          <p className="tg-hint text-sm mt-1">e/acc • @cryptoessay</p>
         </div>
 
         {/* Pricing Cards */}

@@ -27,8 +27,8 @@ export function Home() {
         {/* Header */}
         <div className="tg-card text-center mb-6">
           <div className="text-5xl mb-3">🚀</div>
-          <h1 className="text-2xl font-bold mb-1">cryptoEssay</h1>
-          <p className="tg-hint text-sm">e/acc • AI • Web3</p>
+          <h1 className="text-2xl font-bold mb-1">e/acc</h1>
+          <p className="tg-hint text-sm">@cryptoessay</p>
         </div>
 
         {/* Welcome */}
@@ -94,25 +94,9 @@ export function Home() {
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="mt-6 grid grid-cols-3 gap-3">
-          <div className="tg-card text-center py-3">
-            <p className="text-xl font-bold tg-accent">120K+</p>
-            <p className="tg-hint text-xs">подписчиков</p>
-          </div>
-          <div className="tg-card text-center py-3">
-            <p className="text-xl font-bold tg-accent">24</p>
-            <p className="tg-hint text-xs">эпизода подкаста</p>
-          </div>
-          <div className="tg-card text-center py-3">
-            <p className="text-xl font-bold tg-accent">2017</p>
-            <p className="tg-hint text-xs">в Web3</p>
-          </div>
-        </div>
-
         {/* Footer */}
         <p className="text-center tg-hint text-xs mt-6">
-          Автор: @sgershuni • cyber•Fund
+          Автор: @sgershuni • Twitter: @cyntro_py
         </p>
       </div>
     </div>

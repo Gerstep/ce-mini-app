@@ -16,43 +16,17 @@ interface OpportunityCard {
 
 const opportunities: OpportunityCard[] = [
   {
-    id: 'speaking',
-    icon: '🎤',
-    title: 'Выступления',
-    description: 'Приглашаю выступить на конференциях и митапах',
-    details: [
-      'Web3 и AI Agents',
-      'Self-Sovereign Identity',
-      'DAO Governance',
-      'e/acc философия',
-    ],
-    buttonText: 'Пригласить выступить',
-    buttonAction: 'contact',
-  },
-  {
-    id: 'podcast',
-    icon: '🎙️',
-    title: 'Подкасты и интервью',
-    description: 'Открыт к записи подкастов и интервью',
-    details: [
-      'Технологические темы',
-      'Криптоиндустрия',
-      'AI и автоматизация',
-      'Философия прогресса',
-    ],
-    buttonText: 'Записать подкаст',
-    buttonAction: 'contact',
-  },
-  {
     id: 'consulting',
     icon: '💼',
     title: 'Консультации',
     description: `Персональные консультации — ${consultationPrice}`,
     details: [
-      'Стратегия Web3 проекта',
-      'Tokenomics review',
-      'AI/ML архитектура',
-      'DAO governance',
+      'Венчурные стартапы',
+      'AI-продукты',
+      'AI-нативные организации',
+      'Агентские системы',
+      'Футуризм',
+      'Бизнес и продуктовая стратегия',
     ],
     buttonText: 'Забронировать',
     buttonAction: 'contact',
@@ -63,10 +37,7 @@ const opportunities: OpportunityCard[] = [
     title: 'Pitch проекта',
     description: 'Отправьте pitch deck для рассмотрения cyber•Fund',
     details: [
-      'AI Agents',
-      'Cybernetic economy',
-      'Web3 Infrastructure',
-      'Ранние стадии (Pre-seed, Seed)',
+      'Инвестируем в AI, Web3 и робототехнику',
     ],
     buttonText: 'Отправить pitch',
     buttonAction: 'pitch',
@@ -94,8 +65,6 @@ export function Opportunities() {
     trackButtonClick(`opportunity_${opportunity.id}`);
 
     const messages: Record<string, string> = {
-      speaking: 'Хочу пригласить вас выступить',
-      podcast: 'Приглашаю на запись подкаста',
       consulting: 'Хочу записаться на консультацию',
       pitch: 'Хочу отправить pitch deck проекта',
     };
@@ -157,7 +126,7 @@ export function Opportunities() {
         <div className="tg-card">
           <p className="text-sm leading-relaxed">
             cyber•Fund — венчурный фонд, инвестирующий в кибернетическую экономику.
-            Мы поддерживаем founders на ранних стадиях, помогая строить будущее AI и Web3.
+            Мы поддерживаем основателей на ранних стадиях, помогая строить будущее AI и Web3.
           </p>
           <div className="mt-3 flex items-center gap-2">
             <span className="text-lg">🌐</span>
