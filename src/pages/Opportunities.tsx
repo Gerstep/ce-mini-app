@@ -7,6 +7,7 @@ import { consultationPrice } from '../data/pricing';
 interface OpportunityCard {
   id: string;
   icon: string;
+  iconStyle: string;
   title: string;
   description: string;
   details: string[];
@@ -18,6 +19,7 @@ const opportunities: OpportunityCard[] = [
   {
     id: 'consulting',
     icon: '💼',
+    iconStyle: 'linear-gradient(135deg, #007aff 0%, #0055d4 100%)',
     title: 'Консультации',
     description: `Персональные консультации — ${consultationPrice}`,
     details: [
@@ -34,6 +36,7 @@ const opportunities: OpportunityCard[] = [
   {
     id: 'pitch',
     icon: '🚀',
+    iconStyle: 'linear-gradient(135deg, #34c759 0%, #28a745 100%)',
     title: 'Pitch проекта',
     description: 'Отправьте pitch deck для рассмотрения cyber•Fund',
     details: [
@@ -77,32 +80,41 @@ export function Opportunities() {
     <div className="page-container">
       <div className="content-wrapper">
         {/* Header */}
-        <div className="tg-card text-center mb-4">
-          <div className="text-4xl mb-2">💼</div>
-          <h1 className="text-xl font-bold">Возможности</h1>
-          <p className="tg-hint text-sm mt-1">Варианты сотрудничества</p>
+        <div className="tg-card tg-card-hero text-center mb-5 animate-initial animate-scale-in">
+          <div className="hero-icon" style={{ background: 'linear-gradient(135deg, #007aff 0%, #0055d4 100%)' }}>
+            <span>💼</span>
+          </div>
+          <h1 className="hero-title">Возможности</h1>
+          <p className="hero-subtitle">Варианты сотрудничества</p>
         </div>
 
         {/* Opportunity Cards */}
         <div className="space-y-4">
-          {opportunities.map((opp) => (
-            <div key={opp.id} className="tg-card">
-              <div className="flex items-start gap-3 mb-3">
-                <span className="text-3xl">{opp.icon}</span>
+          {opportunities.map((opp, index) => (
+            <div 
+              key={opp.id} 
+              className={`tg-card animate-initial animate-fade-in-up stagger-${index + 2}`}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <div 
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                  style={{ background: opp.iconStyle }}
+                >
+                  <span className="drop-shadow-sm">{opp.icon}</span>
+                </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-lg">{opp.title}</h3>
-                  <p className="tg-hint text-sm">{opp.description}</p>
+                  <h3 className="font-bold text-lg mb-1">{opp.title}</h3>
+                  <p className="tg-hint text-sm leading-relaxed">{opp.description}</p>
                 </div>
               </div>
 
-              <div className="mb-4 pl-12">
-                <p className="text-xs tg-hint uppercase tracking-wide mb-2">Темы:</p>
+              <div className="mb-4 pl-15" style={{ paddingLeft: '60px' }}>
+                <p className="text-xs tg-hint uppercase tracking-wide mb-2 font-medium">Темы:</p>
                 <div className="flex flex-wrap gap-2">
                   {opp.details.map((detail, idx) => (
                     <span
                       key={idx}
-                      className="text-xs px-2 py-1 rounded-lg"
-                      style={{ backgroundColor: 'var(--tg-theme-secondary-bg-color)' }}
+                      className="tag tag-sm"
                     >
                       {detail}
                     </span>
@@ -112,7 +124,7 @@ export function Opportunities() {
 
               <button
                 onClick={() => handleAction(opp)}
-                className="tg-button-secondary w-full"
+                className="tg-button-secondary"
               >
                 {opp.buttonText}
               </button>
@@ -121,24 +133,30 @@ export function Opportunities() {
         </div>
 
         {/* cyber•Fund Info */}
-        <p className="tg-section-header mt-6">О cyber•Fund</p>
+        <p className="tg-section-header mt-6 animate-initial animate-fade-in stagger-4">
+          О cyber•Fund
+        </p>
 
-        <div className="tg-card">
-          <p className="text-sm leading-relaxed">
+        <div className="tg-card animate-initial animate-fade-in-up stagger-5">
+          <p className="text-sm leading-relaxed mb-4">
             cyber•Fund — венчурный фонд, инвестирующий в кибернетическую экономику.
             Мы поддерживаем основателей на ранних стадиях, помогая строить будущее AI и Web3.
           </p>
-          <div className="mt-3 flex items-center gap-2">
-            <span className="text-lg">🌐</span>
-            <a
-              href="https://cyber.fund"
-              className="tg-link text-sm"
-              target="_blank"
-              rel="noopener noreferrer"
+          <a
+            href="https://cyber.fund"
+            className="flex items-center gap-3 tg-link text-sm font-medium"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div 
+              className="w-9 h-9 rounded-lg flex items-center justify-center"
+              style={{ background: 'var(--tg-theme-secondary-bg-color)' }}
             >
-              cyber.fund
-            </a>
-          </div>
+              🌐
+            </div>
+            <span>cyber.fund</span>
+            <span className="opacity-40 ml-auto">↗</span>
+          </a>
         </div>
       </div>
     </div>
