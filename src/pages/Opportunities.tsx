@@ -108,7 +108,7 @@ export function Opportunities() {
                 </div>
               </div>
 
-              <div className="mb-4 pl-15" style={{ paddingLeft: '60px' }}>
+              <div className="mb-5 pl-15" style={{ paddingLeft: '60px' }}>
                 <p className="text-xs tg-hint uppercase tracking-wide mb-2 font-medium">Темы:</p>
                 <div className="flex flex-wrap gap-2">
                   {opp.details.map((detail, idx) => (
@@ -122,12 +122,14 @@ export function Opportunities() {
                 </div>
               </div>
 
-              <button
-                onClick={() => handleAction(opp)}
-                className="tg-button-secondary"
-              >
-                {opp.buttonText}
-              </button>
+              <div className="pt-3 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
+                <button
+                  onClick={() => handleAction(opp)}
+                  className="tg-button-secondary"
+                >
+                  {opp.buttonText}
+                </button>
+              </div>
             </div>
           ))}
         </div>
