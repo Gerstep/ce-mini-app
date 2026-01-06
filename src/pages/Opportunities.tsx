@@ -108,8 +108,8 @@ export function Opportunities() {
                 </div>
               </div>
 
-              <div className="mb-5 pl-15" style={{ paddingLeft: '60px' }}>
-                <p className="text-xs tg-hint uppercase tracking-wide mb-2 font-medium">Темы:</p>
+              <div className="mt-4">
+                <p className="text-xs tg-hint uppercase tracking-wide mb-3 font-medium">Темы:</p>
                 <div className="flex flex-wrap gap-2">
                   {opp.details.map((detail, idx) => (
                     <span
@@ -122,14 +122,12 @@ export function Opportunities() {
                 </div>
               </div>
 
-              <div className="pt-3 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-                <button
-                  onClick={() => handleAction(opp)}
-                  className="tg-button-secondary"
-                >
-                  {opp.buttonText}
-                </button>
-              </div>
+              <button
+                onClick={() => handleAction(opp)}
+                className="tg-button-secondary mt-5"
+              >
+                {opp.buttonText}
+              </button>
             </div>
           ))}
         </div>
