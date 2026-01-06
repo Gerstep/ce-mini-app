@@ -47,15 +47,17 @@ export function FAQ() {
     <div className="page-container">
       <div className="content-wrapper">
         {/* Header */}
-        <div className="tg-card text-center mb-4">
-          <div className="text-4xl mb-2">❓</div>
-          <h1 className="text-xl font-bold">FAQ</h1>
-          <p className="tg-hint text-sm mt-1">Ответы на частые вопросы</p>
+        <div className="tg-card tg-card-hero text-center mb-5 animate-initial animate-scale-in">
+          <div className="hero-icon" style={{ background: 'linear-gradient(135deg, #af52de 0%, #8944ab 100%)' }}>
+            <span>❓</span>
+          </div>
+          <h1 className="hero-title">FAQ</h1>
+          <p className="hero-subtitle">Ответы на частые вопросы</p>
         </div>
 
         {/* FAQ Sections */}
         {faqData.map((section, sectionIdx) => (
-          <div key={sectionIdx}>
+          <div key={sectionIdx} className={`animate-initial animate-fade-in-up stagger-${sectionIdx + 2}`}>
             <p className="tg-section-header flex items-center gap-2">
               <span>{section.icon}</span>
               {section.title}
@@ -69,23 +71,29 @@ export function FAQ() {
                 return (
                   <div
                     key={itemIdx}
-                    className={itemIdx !== section.items.length - 1 ? 'border-b pb-3 mb-3' : ''}
-                    style={{ borderColor: 'var(--tg-theme-secondary-bg-color)' }}
+                    className="accordion-item"
                   >
                     <button
                       onClick={() => toggleItem(sectionIdx, itemIdx)}
-                      className="w-full text-left flex justify-between items-start gap-2"
+                      className="accordion-trigger"
                     >
-                      <span className="font-medium">{item.question}</span>
-                      <span className={`tg-hint transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+                      <span className="accordion-question">{item.question}</span>
+                      <span className={`accordion-chevron ${isOpen ? 'accordion-chevron-open' : ''}`}>
                         ▼
                       </span>
                     </button>
-                    {isOpen && (
-                      <p className="mt-2 text-sm tg-hint leading-relaxed">
+                    
+                    <div 
+                      className="accordion-content"
+                      style={{
+                        maxHeight: isOpen ? '500px' : '0',
+                        opacity: isOpen ? 1 : 0,
+                      }}
+                    >
+                      <p className="accordion-answer">
                         {item.answer}
                       </p>
-                    )}
+                    </div>
                   </div>
                 );
               })}
@@ -94,31 +102,37 @@ export function FAQ() {
         ))}
 
         {/* Quick Links */}
-        <p className="tg-section-header mt-4">Полезные ссылки</p>
+        <p className="tg-section-header mt-5 animate-initial animate-fade-in stagger-4">
+          Полезные ссылки
+        </p>
 
-        <div className="space-y-3">
+        <div className="space-y-0">
           <button
             onClick={handlePodcastClick}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
+            className="nav-item animate-initial animate-fade-in-up stagger-5"
           >
-            <span className="text-3xl">🎙️</span>
-            <div className="flex-1">
-              <p className="font-semibold">Подкаст cryptoEssay</p>
-              <p className="tg-hint text-sm">24 эпизода о Web3 и AI</p>
+            <div className="nav-item-icon nav-item-icon-red">
+              <span>🎙️</span>
             </div>
-            <span className="tg-hint">↗</span>
+            <div className="nav-item-content">
+              <p className="nav-item-title">Подкаст cryptoEssay</p>
+              <p className="nav-item-subtitle">24 эпизода о Web3 и AI</p>
+            </div>
+            <span className="nav-item-chevron">↗</span>
           </button>
 
           <button
             onClick={handleChannelClick}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
+            className="nav-item animate-initial animate-fade-in-up stagger-6"
           >
-            <span className="text-3xl">📺</span>
-            <div className="flex-1">
-              <p className="font-semibold">Канал @cryptoEssay</p>
-              <p className="tg-hint text-sm">Открыть в Telegram</p>
+            <div className="nav-item-icon nav-item-icon-cyan">
+              <span>📺</span>
             </div>
-            <span className="tg-hint">↗</span>
+            <div className="nav-item-content">
+              <p className="nav-item-title">Канал @cryptoEssay</p>
+              <p className="nav-item-subtitle">Открыть в Telegram</p>
+            </div>
+            <span className="nav-item-chevron">↗</span>
           </button>
         </div>
       </div>

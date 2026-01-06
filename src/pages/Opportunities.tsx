@@ -125,7 +125,7 @@ export function Opportunities() {
               <button
                 onClick={() => handleAction(opp)}
                 className="tg-button-secondary"
-                style={{ marginTop: '24px' }}
+                style={{ marginTop: '24px', marginBottom: '4px' }}
               >
                 {opp.buttonText}
               </button>

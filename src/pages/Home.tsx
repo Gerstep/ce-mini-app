@@ -3,6 +3,50 @@ import { useNavigate } from 'react-router-dom';
 import { useTelegram } from '../hooks/useTelegram';
 import { useAnalytics } from '../hooks/useAnalytics';
 
+interface NavItem {
+  path: string;
+  buttonName: string;
+  icon: string;
+  iconStyle: string;
+  title: string;
+  subtitle: string;
+}
+
+const navItems: NavItem[] = [
+  {
+    path: '/ads',
+    buttonName: 'nav_ads',
+    icon: '📢',
+    iconStyle: 'nav-item-icon-orange',
+    title: 'Реклама',
+    subtitle: 'Разместить рекламу в канале',
+  },
+  {
+    path: '/faq',
+    buttonName: 'nav_faq',
+    icon: '❓',
+    iconStyle: 'nav-item-icon-purple',
+    title: 'FAQ',
+    subtitle: 'Частые вопросы о канале',
+  },
+  {
+    path: '/opportunities',
+    buttonName: 'nav_opportunities',
+    icon: '💼',
+    iconStyle: 'nav-item-icon-blue',
+    title: 'Возможности',
+    subtitle: 'Консультации и сотрудничество',
+  },
+  {
+    path: '/posts',
+    buttonName: 'nav_posts',
+    icon: '⭐',
+    iconStyle: 'nav-item-icon-yellow',
+    title: 'Избранные посты',
+    subtitle: 'Лучший контент канала',
+  },
+];
+
 export function Home() {
   const navigate = useNavigate();
   const { user, hapticFeedback, hideBackButton } = useTelegram();
@@ -24,79 +68,59 @@ export function Home() {
   return (
     <div className="page-container">
       <div className="content-wrapper">
-        {/* Header */}
-        <div className="tg-card text-center mb-6">
-          <div className="text-5xl mb-3">🚀</div>
-          <h1 className="text-2xl font-bold mb-1">e/acc</h1>
-          <p className="tg-hint text-sm">@cryptoessay</p>
+        {/* Hero Header */}
+        <div 
+          className="tg-card tg-card-hero text-center mb-5 animate-initial animate-scale-in"
+        >
+          <div className="hero-icon hero-icon-accent">
+            <span>🚀</span>
+          </div>
+          <h1 className="hero-title">e/acc</h1>
+          <p className="hero-subtitle">@cryptoessay</p>
         </div>
 
-        {/* Welcome */}
-        <div className="tg-card mb-6">
-          <p className="text-lg">
+        {/* Welcome Card */}
+        <div 
+          className="tg-card mb-5 animate-initial animate-fade-in-up stagger-2"
+        >
+          <p className="text-lg leading-relaxed">
             Привет, <span className="font-semibold tg-accent">{firstName}</span>! 👋
           </p>
-          <p className="tg-hint text-sm mt-2">
-            Добро пожаловать в мини-приложение канала о будущем технологий
+          <p className="tg-hint text-sm mt-2 leading-relaxed">
+            Мини-приложение канала о технологиях, AI и будущем
           </p>
         </div>
 
-        {/* Navigation */}
-        <p className="tg-section-header">Навигация</p>
+        {/* Navigation Section */}
+        <p className="tg-section-header animate-initial animate-fade-in stagger-3">
+          Навигация
+        </p>
 
-        <div className="space-y-3">
-          <button
-            onClick={() => handleNavigation('/ads', 'nav_ads')}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
-          >
-            <span className="text-3xl">📢</span>
-            <div className="flex-1">
-              <p className="font-semibold">Реклама</p>
-              <p className="tg-hint text-sm">Разместить рекламу в канале</p>
-            </div>
-            <span className="tg-hint">›</span>
-          </button>
-
-          <button
-            onClick={() => handleNavigation('/faq', 'nav_faq')}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
-          >
-            <span className="text-3xl">❓</span>
-            <div className="flex-1">
-              <p className="font-semibold">FAQ</p>
-              <p className="tg-hint text-sm">Частые вопросы о канале</p>
-            </div>
-            <span className="tg-hint">›</span>
-          </button>
-
-          <button
-            onClick={() => handleNavigation('/opportunities', 'nav_opportunities')}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
-          >
-            <span className="text-3xl">💼</span>
-            <div className="flex-1">
-              <p className="font-semibold">Возможности</p>
-              <p className="tg-hint text-sm">Сотрудничество и консультации</p>
-            </div>
-            <span className="tg-hint">›</span>
-          </button>
-
-          <button
-            onClick={() => handleNavigation('/posts', 'nav_posts')}
-            className="tg-card w-full text-left flex items-center gap-4 active:opacity-80 transition-opacity"
-          >
-            <span className="text-3xl">⭐</span>
-            <div className="flex-1">
-              <p className="font-semibold">Избранные посты</p>
-              <p className="tg-hint text-sm">Лучший контент канала</p>
-            </div>
-            <span className="tg-hint">›</span>
-          </button>
+        <div className="space-y-0">
+          {navItems.map((item, index) => (
+            <button
+              key={item.path}
+              onClick={() => handleNavigation(item.path, item.buttonName)}
+              className={`nav-item animate-initial animate-fade-in-up stagger-${index + 4}`}
+            >
+              <div className={`nav-item-icon ${item.iconStyle}`}>
+                <span className="drop-shadow-sm">{item.icon}</span>
+              </div>
+              <div className="nav-item-content">
+                <p className="nav-item-title">{item.title}</p>
+                <p className="nav-item-subtitle">{item.subtitle}</p>
+              </div>
+              <span className="nav-item-chevron">›</span>
+            </button>
+          ))}
         </div>
 
         {/* Footer */}
-        <p className="text-center tg-hint text-xs mt-6">
-          Автор: @sgershuni • Twitter: @cyntro_py
+        <p 
+          className="text-center tg-hint text-xs mt-8 animate-initial animate-fade-in stagger-8"
+          style={{ opacity: 0.6 }}
+        >
+          @sgershuni • @cyntro_py
         </p>
       </div>
     </div>

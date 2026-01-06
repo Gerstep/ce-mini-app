@@ -30,84 +30,92 @@ export function Ads() {
     <div className="page-container">
       <div className="content-wrapper">
         {/* Header */}
-        <div className="tg-card text-center mb-4">
-          <div className="text-4xl mb-2">📢</div>
-          <h1 className="text-xl font-bold">Реклама в канале</h1>
-          <p className="tg-hint text-sm mt-1">e/acc • @cryptoessay</p>
+        <div className="tg-card tg-card-hero text-center mb-5 animate-initial animate-scale-in">
+          <div className="hero-icon" style={{ background: 'linear-gradient(135deg, #ff9500 0%, #ff6b00 100%)' }}>
+            <span>📢</span>
+          </div>
+          <h1 className="hero-title">Реклама</h1>
+          <p className="hero-subtitle">Размещение в канале @cryptoessay</p>
         </div>
 
         {/* Pricing Cards */}
-        <p className="tg-section-header">Тарифы</p>
+        <p className="tg-section-header animate-initial animate-fade-in stagger-2">
+          Тарифы
+        </p>
 
-        {adPricing.map((option) => (
+        {adPricing.map((option, index) => (
           <div
             key={option.id}
-            className="tg-card"
-            style={option.highlight ? {
-              border: '2px solid var(--tg-theme-button-color)',
-              boxShadow: '0 0 0 3px var(--tg-theme-secondary-bg-color), 0 0 0 5px var(--tg-theme-button-color)'
-            } : {}}
+            className={`pricing-card ${option.highlight ? 'pricing-card-featured' : ''} animate-initial animate-fade-in-up stagger-${index + 3}`}
           >
-            <div className="flex justify-between items-start mb-2">
-              <div>
-                <h3 className="font-bold text-lg">{option.title}</h3>
+            <div className="flex justify-between items-start mb-3">
+              <div className="flex-1">
+                <h3 className="font-bold text-lg mb-1">{option.title}</h3>
                 {option.highlight && (
-                  <span className="text-xs px-2 py-0.5 rounded-full" style={{
-                    backgroundColor: 'var(--tg-theme-button-color)',
-                    color: 'var(--tg-theme-button-text-color)'
-                  }}>
+                  <span className="pricing-badge">
                     Рекомендуем
                   </span>
                 )}
               </div>
               <div className="text-right">
-                <span className="text-xl font-bold tg-accent">{option.price}</span>
+                <span className="pricing-price tg-accent">{option.price}</span>
                 {option.priceNote && (
                   <span className="text-sm tg-hint ml-1">{option.priceNote}</span>
                 )}
               </div>
             </div>
-            <p className="tg-hint text-sm mb-3">{option.description}</p>
-            <ul className="space-y-1.5">
+            
+            <p className="tg-hint text-sm mb-4 leading-relaxed">{option.description}</p>
+            
+            <div className="space-y-1">
               {option.features.map((feature, idx) => (
-                <li key={idx} className="text-sm flex items-center gap-2">
-                  <span className="tg-accent">✓</span>
-                  {feature}
-                </li>
+                <div key={idx} className="pricing-feature">
+                  <span className="pricing-feature-check">✓</span>
+                  <span className="flex-1">{feature}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
 
         {/* Conditions */}
-        <p className="tg-section-header mt-4">Условия</p>
+        <p className="tg-section-header mt-5 animate-initial animate-fade-in stagger-4">
+          Условия
+        </p>
 
-        {adConditions.map((condition, idx) => (
-          <div key={idx} className="tg-card">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xl">{condition.icon}</span>
-              <h3 className="font-semibold">{condition.title}</h3>
+        <div className="space-y-3">
+          {adConditions.map((condition, idx) => (
+            <div key={idx} className={`tg-card animate-initial animate-fade-in-up stagger-${idx + 5}`}>
+              <div className="flex items-center gap-3 mb-3">
+                <div 
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+                  style={{ background: 'var(--tg-theme-secondary-bg-color)' }}
+                >
+                  {condition.icon}
+                </div>
+                <h3 className="font-semibold text-base">{condition.title}</h3>
+              </div>
+              <ul className="space-y-2 pl-13">
+                {condition.items.map((item, itemIdx) => (
+                  <li key={itemIdx} className="text-sm tg-hint flex items-start gap-2.5">
+                    <span className="opacity-40 mt-0.5">•</span>
+                    <span className="flex-1 leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-1">
-              {condition.items.map((item, itemIdx) => (
-                <li key={itemIdx} className="text-sm tg-hint flex items-center gap-2">
-                  <span>•</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          ))}
+        </div>
 
         {/* CTA Button */}
-        <div className="mt-6 px-4">
+        <div className="cta-container animate-initial animate-slide-up stagger-8">
           <button
             onClick={handleOrderClick}
-            className="tg-button text-lg"
+            className="tg-button"
           >
             Заказать рекламу
           </button>
-          <p className="text-center tg-hint text-xs mt-3">
+          <p className="text-center tg-hint text-xs mt-3 opacity-70">
             Откроется диалог с @sgershuni
           </p>
         </div>
