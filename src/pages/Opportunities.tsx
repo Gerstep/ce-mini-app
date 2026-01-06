@@ -109,7 +109,7 @@ export function Opportunities() {
               </div>
 
               <div style={{ marginTop: '16px' }}>
-                <p className="text-xs tg-hint uppercase tracking-wide font-medium" style={{ marginBottom: '12px' }}>Темы:</p>
+                <p className="text-xs tg-hint uppercase tracking-wide font-medium" style={{ marginBottom: '5px' }}>Темы:</p>
                 <div className="flex flex-wrap gap-2">
                   {opp.details.map((detail, idx) => (
                     <span
@@ -125,7 +125,7 @@ export function Opportunities() {
               <button
                 onClick={() => handleAction(opp)}
                 className="tg-button-secondary"
-                style={{ marginTop: '24px', marginBottom: '4px' }}
+                style={{ marginTop: '14px' }}
               >
                 {opp.buttonText}
               </button>

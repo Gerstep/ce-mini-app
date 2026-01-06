@@ -39,7 +39,7 @@ export function Posts() {
         </div>
 
         {/* Posts Count Badge */}
-        <div className="flex justify-center animate-initial animate-fade-in stagger-2" style={{ marginBottom: '20px' }}>
+        <div className="flex justify-center animate-initial animate-fade-in stagger-2" style={{ marginBottom: '10px' }}>
           <span className="tag tag-accent">
             {featuredPosts.length} постов
           </span>
