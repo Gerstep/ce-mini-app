@@ -48,21 +48,16 @@ export function Ads() {
             key={option.id}
             className={`pricing-card ${option.highlight ? 'pricing-card-featured' : ''} animate-initial animate-fade-in-up stagger-${index + 3}`}
           >
-            <div className="flex justify-between items-start mb-3">
-              <div className="flex-1">
-                <h3 className="font-bold text-lg mb-1">{option.title}</h3>
-                {option.highlight && (
-                  <span className="pricing-badge">
-                    Рекомендуем
-                  </span>
-                )}
+            <div className="mb-3">
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="font-bold text-lg">{option.title}</h3>
+                <span className="tg-hint text-sm">— {option.price}{option.priceNote && ` ${option.priceNote}`}</span>
               </div>
-              <div className="text-right">
-                <span className="pricing-price tg-accent">{option.price}</span>
-                {option.priceNote && (
-                  <span className="text-sm tg-hint ml-1">{option.priceNote}</span>
-                )}
-              </div>
+              {option.highlight && (
+                <span className="pricing-badge">
+                  Рекомендуем
+                </span>
+              )}
             </div>
             
             <p className="tg-hint text-sm mb-4 leading-relaxed">{option.description}</p>
