@@ -54,4 +54,4 @@ export const adConditions = [
   },
 ];
 
-export const consultationPrice = '$500/час';
+export const consultationPrice = '$600/час';
