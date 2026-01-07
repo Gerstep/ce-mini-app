@@ -57,9 +57,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
     'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(180deg, 
-    var(--tg-theme-secondary-bg-color) 0%, 
-    #e8e8ed 100%);
+  background-color: var(--tg-theme-secondary-bg-color);
   color: var(--tg-theme-text-color);
   min-height: 100vh;
   min-height: 100dvh;
@@ -93,9 +91,7 @@ a:active {
   min-height: 100vh;
   min-height: 100dvh;
   padding-bottom: env(safe-area-inset-bottom, 32px);
-  background: linear-gradient(180deg, 
-    var(--tg-theme-secondary-bg-color) 0%, 
-    #e8e8ed 100%);
+  background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .content-wrapper {
