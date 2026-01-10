@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from '../hooks/useTelegram';
 import { useAnalytics } from '../hooks/useAnalytics';
-import { consultationPrice } from '../data/pricing';
 
 interface OpportunityCard {
   id: string;
@@ -21,7 +20,7 @@ const opportunities: OpportunityCard[] = [
     icon: '💼',
     iconStyle: 'linear-gradient(135deg, #007aff 0%, #0055d4 100%)',
     title: 'Консультации',
-    description: `Персональные консультации — ${consultationPrice}`,
+    description: 'Персональные консультации',
     details: [
       'Венчурные стартапы',
       'AI-продукты',
@@ -97,7 +96,7 @@ export function Opportunities() {
             >
               <div className="flex items-start gap-3 mb-4">
                 <div 
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"
                   style={{ background: opp.iconStyle }}
                 >
                   <span className="drop-shadow-sm">{opp.icon}</span>
